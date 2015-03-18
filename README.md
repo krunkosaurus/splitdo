@@ -15,6 +15,7 @@ The issue is that you cannot _pause_ a for loop while you operate on each array 
 
 ## Simple Example
 ```javascript
+var splitDo = require('splitdo');
 
 // For every 1000 users in user array, upload to mysql.
 splitDo(usersAr, 1000, function(subset, done){
@@ -26,6 +27,8 @@ splitDo(usersAr, 1000, function(subset, done){
 
 ## Nested Example
 ```javascript
+var splitDo = require('splitdo');
+
 splitDo(filesAr, 1, function(file, thisFileDone){
   
   // Fetch and concert each files to JSON
