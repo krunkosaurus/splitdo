@@ -35,6 +35,12 @@ splitDo(`referenceToArray`, `integer`, `callback`);
 
 **Note:** The second argument in your `callback` is optional and if you don't specify a done method (can be called anything) then your array will be executed sequentially in the standard node fashion.  This can be useful if you don't require pausing the array but still want to operate on sections of an array.
 
+# To run tests
+
+1. Git clone this repo.
+2. `npm install`
+3. `npm test`
+
 # Examples
 
 ## Simple Example
