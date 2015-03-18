@@ -1,11 +1,11 @@
 var Q = require('q');
 
 function splitDo(origAr, splitBy, cb){
-  var deferred = Q.defer();
+  var deferred;
   var origAr = origAr;
 
   // Check for existence of done callback to see if this should work non-blocking.
-  var hasDoneCallback = !!cb.toString().match(/done\){/);
+  var hasDoneCallback = cb.length > 1;
   // Array of split orig array.
   var splitArrays = [];
   var jobs = [];
@@ -15,6 +15,7 @@ function splitDo(origAr, splitBy, cb){
   }
 
   if (hasDoneCallback){
+    deferred = Q.defer();
     // For each splitArray create a job
     splitArrays.forEach(function(arSection, i, all){
       jobs.push(function(){
@@ -35,14 +36,13 @@ function splitDo(origAr, splitBy, cb){
     jobs.forEach(function (f) {
       result = result.then(f);
     });
+
+    return deferred.promise;
   }else{
     splitArrays.forEach(function(arSection){
         cb(arSection);
     });
-    deferred.resolve();
   }
-
-  return deferred.promise;
 }
 
 module.exports = splitDo;

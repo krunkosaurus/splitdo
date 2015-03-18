@@ -40,23 +40,22 @@ var testAr5 = [
 ];
 
 // Make sure each item gets called correctly. (regular, blocking)
-console.log('test1');
+console.log('test1 start');
 splitDo(testAr1, 3, function(item){
   console.log('test1: item', item);
-}).then(function(){
-  console.log('test1 done');
 });
+console.log('test1 done');
+
 
 // Check off by one -1 (regular, blocking)
-console.log('test2');
+console.log('test2 start');
 splitDo(testAr2, 3, function(item){
   console.log('test2: item', item);
-}).then(function(){
-  console.log('test2 done');
 });
+console.log('test2 done');
 
 // Check off by one +1 (non-blocking)
-console.log('test3');
+console.log('test3 start');
 splitDo(testAr3, 3, function(item, done){
   console.log('test3: item', item);
   done();
@@ -65,7 +64,7 @@ splitDo(testAr3, 3, function(item, done){
 });
 
 // Check multi dimensional array (non-blocking)
-console.log('test4');
+console.log('test4 start');
 splitDo(testAr4, 3, function(item, done){
   console.log('test4: item', item);
   done();
@@ -74,7 +73,7 @@ splitDo(testAr4, 3, function(item, done){
 });
 
 // Check multi dimensional array with timeout to prove (non-blocking)
-console.log('test5');
+console.log('test5 start');
 splitDo(testAr5, 3, function(item, done){
   setTimeout(function(){
     console.log('test5: item', item);
