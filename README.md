@@ -9,7 +9,7 @@ The issue is that you cannot _pause_ a for loop while you operate on each array 
 
 * Abstracts away the complexity of promises and gives you one simple `done` callback for each job.  Chain with `.then` afterwards if you need to run something else after your complete **splitdo** job is done.
 * Supports single and multi-demensional arrays.
-* supports nesting **splitdo** jobs.  For example, if you have a folder of CSV files containing user accounts to upload, run one splitdo job to fetch the users and convert them to JSON and a nested **splitdo** job to upload the users, 1000-at-a-time, to not overwhelm your MySQL database (examples below).
+* Supports nesting **splitdo** jobs.  For example, if you have a folder of CSV files containing user accounts to upload, run one splitdo job to fetch the users and convert them to JSON and a nested **splitdo** job to upload the users, 1000-at-a-time, to not overwhelm your MySQL database (examples below).
 
 # Examples
 
