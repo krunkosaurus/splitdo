@@ -1,0 +1,14 @@
+{
+  "name": "splitdo",
+  "version": "0.0.1",
+  "description": "Process an array in smaller parts in blocking and non-blocking format.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/index.js"
+  },
+  "author": "Mauvis Ledford",
+  "license": "BSD",
+  "devDependencies": {
+    "q": "^1.2.0"
+  }
+}
