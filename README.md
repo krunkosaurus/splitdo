@@ -29,11 +29,11 @@ var splitDo = require('splitdo');
 
 splitDo(`referenceToArray`, `integer`, `callback`);
 
-- `referenceToArray` (Array): Reference to array to operate on.
-- `integer` (Integer): number of items in array to operate on at a time. This is 1-based so specifying 3 will operate on 3 items at a time.  
-- `callback` (Function): Your function callback that will operate on peices of the array.  The first argument your callback receives is a subsection of the array.  The second argument in your `callback` is a done method you must execute to proceed to the next subsection.
+- `referenceToArray` (_Array_): Reference to array to operate on.
+- `integer` (_Integer_): number of items in array to operate on at a time. This is 1-based so specifying 3 will operate on 3 items at a time.  
+- `callback` (_Function_): Your function callback that will operate on peices of the array.  The first argument your callback receives is a subsection of the array.  The second argument in your `callback` is a done method you must execute to proceed to the next subsection.
 
-**Note:** The second argument in your `callback` is optional and if you don't specify a done method (can be called anything) then your array will be executed sequentially in the standard node fashion.  This can be useful if you don't require pausing the array but still want to operate on sections of an array.
+**Note:** The second argument in your `callback` is optional and if you don't specify a done method (can be called anything) then your array will be executed sequentially in the standard node fashion.  This can be more performant if you don't require pausing the array but still want to operate on sections of an array.
 
 # To run tests
 
@@ -59,6 +59,7 @@ splitDo(usersAr, 1000, function(subset, done){
 ```javascript
 var splitDo = require('splitdo');
 
+// Note here that `done` can be called anything. Especially useful for nesting.
 splitDo(filesAr, 1, function(file, doneFiles){
   
   // Fetch and concert each files to JSON
