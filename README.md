@@ -11,6 +11,14 @@ The issue is that you cannot _pause_ a for loop while you operate on each array 
 * Supports single and multi-demensional arrays.
 * Supports nesting **splitdo** jobs.  For example, if you have a folder of CSV files containing user accounts to upload, run one splitdo job to fetch the users and convert them to JSON and a nested **splitdo** job to upload the users, 1000-at-a-time, to not overwhelm your MySQL database (examples below).
 
+# To install
+
+Inside your project:
+
+```bash
+npm install splitdo
+```
+
 # Examples
 
 ## Simple Example
@@ -29,7 +37,7 @@ splitDo(usersAr, 1000, function(subset, done){
 ```javascript
 var splitDo = require('splitdo');
 
-splitDo(filesAr, 1, function(file, thisFileDone){
+splitDo(filesAr, 1, function(file, done){
   
   // Fetch and concert each files to JSON
   csvFileToJson(file, function(users){
@@ -38,7 +46,7 @@ splitDo(filesAr, 1, function(file, thisFileDone){
       sendToMysql(partialUsers, file, done);
     }).then(function(){
       // Wait 200ms before processing the next file.
-      setTimeout(thisFileDone, 200);
+      setTimeout(done, 200);
     });
 
   });
