@@ -37,7 +37,7 @@ splitDo(usersAr, 1000, function(subset, done){
 ```javascript
 var splitDo = require('splitdo');
 
-splitDo(filesAr, 1, function(file, thisFileDone){
+splitDo(filesAr, 1, function(file, done){
   
   // Fetch and concert each files to JSON
   csvFileToJson(file, function(users){
@@ -46,7 +46,7 @@ splitDo(filesAr, 1, function(file, thisFileDone){
       sendToMysql(partialUsers, file, done);
     }).then(function(){
       // Wait 200ms before processing the next file.
-      setTimeout(thisFileDone, 200);
+      setTimeout(done, 200);
     });
 
   });
