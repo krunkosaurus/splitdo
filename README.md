@@ -60,16 +60,16 @@ splitDo(usersAr, 1000, function(subset, done){
 var splitDo = require('splitdo');
 
 // Note here that `done` can be called anything. Especially useful for nesting.
-splitDo(filesAr, 1, function(file, doneFiles){
+splitDo(filesAr, 1, function(file, doneFile){
   
   // Fetch and concert each files to JSON
   csvFileToJson(file, function(users){
 
-    splitDo(users, 1000, function(partialUsers, donePartialUsers){
-      sendToMysql(partialUsers, file, donePartialUsers);
+    splitDo(users, 1000, function(partialUsers, donePartialUser){
+      sendToMysql(partialUsers, file, donePartialUser);
     }).then(function(){
       // Wait 200ms before processing the next file.
-      setTimeout(doneFiles, 200);
+      setTimeout(doneFile, 200);
     });
 
   });
