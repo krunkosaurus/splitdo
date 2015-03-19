@@ -1,6 +1,6 @@
 {
   "name": "splitdo",
-  "version": "1.0.8",
+  "version": "1.0.12",
   "description": "Process an array in smaller parts in blocking and non-blocking format.",
   "main": "index.js",
   "repository": {
