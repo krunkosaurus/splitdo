@@ -39,6 +39,9 @@ var testAr5 = [
   [15,'a','b']
 ];
 
+var testAr6 = [1,2,3,4,5,6];
+var testAr7 = [{"a":"1"}, {"b":"2"},{"c":"3"}];
+
 // Make sure each item gets called correctly. (regular, blocking)
 console.log('test1 start');
 splitDo(testAr1, 3, function(item){
@@ -74,11 +77,34 @@ splitDo(testAr4, 3, function(item, done){
 
 // Check multi dimensional array with timeout to prove (non-blocking)
 console.log('test5 start');
-splitDo(testAr5, 3, function(item, done){
+splitDo(testAr5, 3, function(item, done, segmentNumber, allSegments){
   setTimeout(function(){
     console.log('test5: item', item);
     done();
   }, 1000);
 }).then(function(){
   console.log('test5 done');
+});
+
+// Check splitby one does not use array format.
+console.log('test6 start');
+splitDo(testAr6, 1, function(item, done, segmentNumber, allSegments){
+  console.log('arguments', arguments);
+  setTimeout(function(){
+    console.log('test6: item', item);
+    done();
+  }, 1000);
+}).then(function(){
+  console.log('test6 done');
+});
+
+// Check splitby one does not use array format.
+console.log('test7 start');
+splitDo(testAr7, 1, function(item, done, segmentNumber, allSegments){
+  setTimeout(function(){
+    console.log('test7: item', item);
+    done();
+  }, 1000);
+}).then(function(){
+  console.log('test7 done');
 });

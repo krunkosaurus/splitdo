@@ -8,21 +8,39 @@ function splitDo(origAr, splitBy, cb){
   var hasDoneCallback = cb.length > 1;
   // Array of split orig array.
 
-  var splitArrays = [];
+  var splitArrays;
   var jobs = [];
 
-  while (origAr.length > 0){
-    splitArrays.push(origAr.splice(0, splitBy));
+  // Sanity checks.
+  if (typeof splitBy !== 'number'){
+    throw new Error('splitBy argument must be a number. Passed:', splitBy);
+  }
+
+  if (!(origAr instanceof Array)){
+    throw new Error('origAr argument must be an array. Passed:', origAr);
+  }
+
+  // For better usability: If splitBy is one, don't pass array segments.
+  if (splitBy == 1){
+    splitArrays = origAr;
+  }else{
+    splitArrays = [];
+
+    // Split the origArray into multiple arrays.
+    while (origAr.length > 0){
+      splitArrays.push(origAr.splice(0, splitBy));
+    }
   }
 
   if (hasDoneCallback){
     deferred = Q.defer();
-    // For each splitArray create a job
+
+    // For each splitArray create a promise job.
     splitArrays.forEach(function(arSection, i, all){
       jobs.push(function(){
         var d = Q.defer();
 
-        cb(arSection, d.resolve);
+        cb(arSection, d.resolve, i, all);
         return d.promise;
       });
     });
