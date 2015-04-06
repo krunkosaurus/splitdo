@@ -29,15 +29,15 @@ var splitDo = require('splitdo');
 
 splitDo(`arrayReference`, `splitByNumber`, `callback`);
 
-- `arrayReference` (_Array_): Reference to array to operate on, can be in-line.
-- `splitByNumber` (_Integer_): number of items in array to operate on at a time. This is 1-based so specifying 3 will operate on 3 items at a time.  Don't worry if this doesn't divide easily into your total array count. Any leftover items will be in the last callback.
-- `callback` (_Function_(`arraySegment`, `doneCallback`, `segmentNumber`,  `allSegments`)): Your function callback that will operate on each peice of the array.  
+- `arrayReference` _Array_: Reference to array to operate on, can be in-line.
+- `splitByNumber` _Integer_: number of items in array to operate on at a time. This is 1-based so specifying 3 will operate on 3 items at a time.  Don't worry if this doesn't divide easily into your total array count. Any leftover items will be in the last callback.
+- `callback` _Function_(`arraySegment`, `doneCallback`, `segmentNumber`,  `allSegments`): Your function callback that will operate on each peice of the array.  
 
   The first argument your callback receives is a subsection of the array.  The second argument is a done method you must execute to proceed to the next subsection.
-  - `arraySegment` (_Array or Other_):  If your `splitBy` value is greater than 1 then this value is the current array segment for your callback to operate on.  For your convenience, if the passed value of `splitBy` is 1, then this value contains the value of each consequetive item in your original array.
-  - `doneCallback` (_Function_): A callback you must execute to proceed to the next subsection.
-  - `segmentNumber` (_Number_): Zero-based number of which segment you are operating on. For example if `arrayReference` has a length of 300, and `splitByNumber` is 100, then your callback would recieve: 0 then 1 then 2 on each execution.  This argument is helpeful but not used in most cases.
-  - `allSegments` (_Array_): This is a reference to all array segments that your original array was split in to. This argument is helpeful but not used in most cases.  If your `splitBy` value is 1, this array is the same as your original array.
+  - `arraySegment` _Array or Other_:  If your `splitBy` value is greater than 1 then this value is the current array segment for your callback to operate on.  For your convenience, if the passed value of `splitBy` is 1, then this value contains the value of each consequetive item in your original array.
+  - `doneCallback` _Function_: A callback you must execute to proceed to the next subsection.
+  - `segmentNumber` _Number_: Zero-based number of which segment you are operating on. For example if `arrayReference` has a length of 300, and `splitByNumber` is 100, then your callback would recieve: 0 then 1 then 2 on each execution.  This argument is helpeful but not used in most cases.
+  - `allSegments` _Array_: This is a reference to all array segments that your original array was split in to. This argument is helpeful but not used in most cases.  If your `splitBy` value is 1, this array is the same as your original array.
 
 **Note:** The second argument in your `callback` is optional and if you don't specify a done method (can be called anything) then your array will be executed sequentially in the standard node fashion.  This can be more performant if you don't require pausing the array but still want to operate on sections of an array.
 
