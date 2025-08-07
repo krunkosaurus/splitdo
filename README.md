@@ -3,7 +3,7 @@
 
 *I don't get it. Why wouldn't I just use a normal for loop?*
 
-The issue is that with single-threaded programming languages like Node, you cannot _pause_ a for loop while you operate on each array item or grouping of array items—nor would you want to even if you could.  **splitdo** allows this "pausing" while letting your CPU do other things and come back when you're nice and ready.  To do this **splitdo** gives you two done events to trigger: one called `.done` when each sub-array job is done, and one (called `.then`) when the whole array job is done. 
+The issue is that with single-threaded programming languages like Node, you cannot _pause_ a for loop while you operate on each array item or grouping of array items—nor would you want to even if you could.  **splitdo** allows this "pausing" while letting your CPU do other things and come back when you're nice and ready.  To do this **splitdo** gives you a `done` callback to trigger for each chunk and a `.then()` method to run when the whole array job is finished.
 
 **Splitdo** features:
 
