@@ -2,7 +2,6 @@ var Q = require('q');
 
 function splitDo(origAr, splitBy, cb){
   var deferred;
-  var origAr = origAr;
 
   // Check for existence of done callback to see if this should work non-blocking.
   var hasDoneCallback = cb.length > 1;
@@ -21,14 +20,18 @@ function splitDo(origAr, splitBy, cb){
   }
 
   // For better usability: If splitBy is one, don't pass array segments.
-  if (splitBy == 1){
-    splitArrays = origAr;
-  }else{
+  if (splitBy === 1){
+    // Shallow copy to prevent accidental mutation of the original array
+    splitArrays = origAr.slice();
+  } else {
     splitArrays = [];
 
+    // Work on a copy so the original array is not modified
+    var workingArray = origAr.slice();
+
     // Split the origArray into multiple arrays.
-    while (origAr.length > 0){
-      splitArrays.push(origAr.splice(0, splitBy));
+    while (workingArray.length > 0){
+      splitArrays.push(workingArray.splice(0, splitBy));
     }
   }
 

@@ -1,4 +1,5 @@
 var splitDo = require('../');
+var assert = require('assert');
 
 var testAr1 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
 var testAr2 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14];
@@ -108,3 +109,13 @@ splitDo(testAr7, 1, function(item, done, segmentNumber, allSegments){
 }).then(function(){
   console.log('test7 done');
 });
+
+// Ensure the original array is not mutated.
+console.log('test8 start');
+var original = [1,2,3,4];
+var originalCopy = original.slice();
+splitDo(original, 2, function(){
+  // no-op
+});
+assert.deepStrictEqual(original, originalCopy);
+console.log('test8 done');
