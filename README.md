@@ -8,7 +8,7 @@ The issue is that with single-threaded programming languages like Node, you cann
 **Splitdo** features:
 
 * Abstracts away the complexity of promises and gives you one simple `done` callback for each job.  Chain with `.then` afterwards if you need to run something else after your complete **splitdo** job is done.
-* Supports single and multi-demensional arrays.
+* Supports single and multi-dimensional arrays.
 * Supports nesting multiple **splitdo** jobs.  For example, if you have a folder of CSV files containing user accounts to upload, run one splitdo job to fetch each list of users and convert them to JSON and a nested **splitdo** job to upload the users, 1000-at-a-time, to not overwhelm your database (examples below).
 
 # To install
