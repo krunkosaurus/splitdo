@@ -13,11 +13,11 @@ function splitDo(origAr, splitBy, cb){
 
   // Sanity checks.
   if (typeof splitBy !== 'number'){
-    throw new Error('splitBy argument must be a number. Passed:', splitBy);
+    throw new Error('splitBy argument must be a number. Passed: ' + splitBy);
   }
 
   if (!(origAr instanceof Array)){
-    throw new Error('origAr argument must be an array. Passed:', origAr);
+    throw new Error('origAr argument must be an array. Passed: ' + origAr);
   }
 
   // For better usability: If splitBy is one, don't pass array segments.
